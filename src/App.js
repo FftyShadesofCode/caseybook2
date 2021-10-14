@@ -41,8 +41,9 @@ function App() {
     setFormValues({ ...formValues, [evt.target.name]: evt.target.value })
   }
 
-  const submit = () => {
-
+  const submit = (e) => {
+    e.preventDefault();
+    setPosts([...posts, formValues]);
   }
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function App() {
         </nav>
       </header>
       <Route path="/post">
-        <PostForm change={change} submit={submit} post={formValues} />
+        <PostForm change={change} submit={submit} post={formValues} posts={posts}/>
       </Route>
       <Route path="/users/:id">
         <User users={users} />
