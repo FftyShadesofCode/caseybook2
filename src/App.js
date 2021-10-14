@@ -12,7 +12,9 @@ const admin = {
     state: "NY"
   },
   uuid: "12345",
-  picture: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg",
+  picture: {
+    medium: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg"
+  },
   name: {
     first: "CRHarding"
   },
