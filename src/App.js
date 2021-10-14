@@ -8,10 +8,14 @@ import Users from './components/Users';
 import HomePage from './components/HomePage';
 
 const admin = {
-  location: "NY",
+  location: {
+    state: "NY"
+  },
   uuid: "12345",
   picture: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg",
-  name: "CRHarding",
+  name: {
+    first: "CRHarding"
+  },
   email: "C@c.com"
 }
 
@@ -22,6 +26,7 @@ function App() {
     axios.get('https://randomuser.me/api/?results=5')
       .then(res => {
         console.log(res.data.results);
+        setUsers([...users, ...res.data.results]);
       }).catch(err => console.error(err));
   }, [])
 
