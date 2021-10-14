@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom';
 
 // Custom components
 import Users from './components/Users';
+import User from './components/User';
 import HomePage from './components/HomePage';
 
 const admin = {
@@ -44,7 +45,7 @@ function App() {
       <Route path="/users/:id">
         <User users={users} />
       </Route>
-      <Route path="/users">
+      <Route exact path="/users">
         <Users users={users} />
       </Route>
       <Route exact path="/">
