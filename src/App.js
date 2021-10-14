@@ -11,7 +11,9 @@ const admin = {
   location: {
     state: "NY"
   },
-  uuid: "12345",
+  login: {
+    uuid: "12345"
+  },
   picture: {
     medium: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg"
   },
@@ -27,7 +29,6 @@ function App() {
   useEffect(() => {
     axios.get('https://randomuser.me/api/?results=5')
       .then(res => {
-        console.log(res.data.results);
         setUsers([...users, ...res.data.results]);
       }).catch(err => console.error(err));
   }, [])
@@ -40,6 +41,9 @@ function App() {
           <Link to="/users">Friends Page</Link>
         </nav>
       </header>
+      <Route path="/users/:id">
+        <User users={users} />
+      </Route>
       <Route path="/users">
         <Users users={users} />
       </Route>
