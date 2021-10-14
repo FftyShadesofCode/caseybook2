@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom';
 
 // Custom components
 import Users from './components/Users';
+import HomePage from './components/HomePage';
 
 const admin = {
   location: "NY",
@@ -15,7 +16,7 @@ const admin = {
 }
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([admin]);
 
   useEffect(() => {
     axios.get('https://randomuser.me/api/?results=5')
@@ -33,10 +34,11 @@ function App() {
         </nav>
       </header>
       <Route path="/users">
-        <Users />
+        <Users users={users} />
       </Route>
-      <h1>CaseyBook</h1>
-      <h2>It's like facebook, only made by some guy called Casey</h2>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
     </div>
   );
 }
