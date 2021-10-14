@@ -32,11 +32,13 @@ const post = {
 
 function App() {
   const [users, setUsers] = useState([admin]);
-  const [formValues, setFormValues] = useState();
+  const [formValues, setFormValues] = useState(post);
   const [posts, setPosts] = useState([post]);
 
   const change = (evt) => {
-
+    // Long hand version
+    // const { name, value } = evt.target;
+    setFormValues({ ...formValues, [evt.target.name]: evt.target.value })
   }
 
   const submit = () => {
@@ -60,7 +62,7 @@ function App() {
         </nav>
       </header>
       <Route path="/post">
-        <PostForm change={change} submit={submit} post={posts[0]} />
+        <PostForm change={change} submit={submit} post={formValues} />
       </Route>
       <Route path="/users/:id">
         <User users={users} />
