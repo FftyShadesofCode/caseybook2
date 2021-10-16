@@ -8,10 +8,14 @@ import Users from './components/Users';
 import HomePage from './components/HomePage';
 
 const admin = {
-    location: 'NY',
+    location: {
+        state: 'NY'
+    },
     uuid: '1cdcd44d-44cd-43cb-b59f-13d3f4468b5e',
     picture: 'https://media.gq.com/photos/588913c08d52a3d07dbac878/64:25/w_2469,h_964,c_limit/0217-GQ-FEJO02-01-Prostitution-Therapy-02.jpg',
-    name: 'Imma D. Sucker',
+    name: {
+        first: 'Imma D. Sucker'
+    },
     email: 'ana.perrin@example.com',
 }
 function App() {
@@ -21,6 +25,7 @@ function App() {
         axios.get( 'https://randomuser.me/api/?results=5')
             .then(res => {
                 console.log(res.data.results);
+                setUsers([...users, ...res.data.results]);
             }).catch(err => console.error(err));
     }, [])
     return (
