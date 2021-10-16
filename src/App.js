@@ -15,27 +15,27 @@ const admin = {
     email: 'ana.perrin@example.com',
 }
 function App() {
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([admin]);
 
     useEffect(() => {
-        axios.get('https://randomuser.me/api/')
+        axios.get( 'https://randomuser.me/api/?results=5')
             .then(res => {
                 console.log(res.data.results);
             }).catch(err => console.error(err));
     }, [])
     return (
-        <div className='App'>
+        <div className="App">
             <header>
                 <nav>
-                    <Link to='/'>Home</Link>
-                    <Link to='/users'>Bitches N' Hoes</Link>
-                    <Link to='/'>DON'T FUCKIN' CLICK ME!</Link>
+                    <Link to="/">Home</Link>
+                    <Link to="/users">Bitches N' Hoes</Link>
+                    <Link to="/post">DON'T FUCKIN' CLICK THIS!!!</Link>
                 </nav>
             </header>
-            <Route path='/users'>
+            <Route exact path="/users">
                 <Users users={users} />
             </Route>
-            <Route path='/'>
+            <Route exact path="/">
                 <HomePage />
             </Route>
         </div>
